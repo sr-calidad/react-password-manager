@@ -9,16 +9,20 @@ const Navbar = () => {
             <span className='text-green-500'>&lt;</span>
              Pass
             <span className='text-green-500'>Op/&gt;</span>
-             </div>
-      <ul>
+        </div>
+      {/* <ul>
         <li className='flex gap-4'> 
         <a className ='hover:font-bold' href=''>Home</a>
          <a className ='hover:font-bold' href=''>About</a> 
          <a className ='hover:font-bold' href=''>Contact Us</a> 
          </li>
-      </ul>
+      </ul> */}
       <div>
-        <img src="icons/github.png" alt="" />
+        <a className="flex gap-2 justify-between" href="https://github.com/sr-calidad/react-password-manager" target="_blank">
+
+        <img className="invert w-8 " src="icons/github.png"  />
+        <span className='font-bold py-1' >Github</span>
+        </a>
       </div>
         </div>
     </nav>
