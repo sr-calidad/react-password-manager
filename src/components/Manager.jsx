@@ -18,6 +18,7 @@ const Manager = () => {
   const savePassword = () => {
     setpasswordArray([...passwordArray, {...form, id:uuidv4()}]);
     localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id:uuidv4()}]));
+    setform({ site: "", username: "", password: "" })
   };
 
   const deletePassword = (id) => {
@@ -157,7 +158,7 @@ const Manager = () => {
                 {passwordArray.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td className=" py-2 border border-white text-center min-w-32">
+                      <td className=" py-2 border border-white text-center">
                         <div className="flex items-center justify-center">
                           <a href={item.site} target="_blank">
                             {item.site}
@@ -181,7 +182,7 @@ const Manager = () => {
                           </div>
                         </div>
                       </td>
-                      <td className=" py-2 border border-white text-center min-w-32">
+                      <td className=" py-2 border border-white text-center">
                         <div className="flex items-center justify-center">
                           <span>{item.username}</span>
                           <div
@@ -203,7 +204,7 @@ const Manager = () => {
                           </div>
                         </div>
                       </td>
-                      <td className=" py-2 border border-white text-center min-w-32">
+                      <td className=" py-2 border border-white text-center ">
                         <div className="flex items-center justify-center">
                           <span>{item.password}</span>
                           <div
@@ -225,7 +226,7 @@ const Manager = () => {
                           </div>
                         </div>
                       </td>
-                      <td className=" py-2 border border-white text-center min-w-32">
+                      <td className=" py-2 border border-white text-center">
                       <span className="mx-1" onClick={()=>{editPassword(item.id)}}>
                           <lord-icon
                             src="https://cdn.lordicon.com/zfzufhzk.json"
