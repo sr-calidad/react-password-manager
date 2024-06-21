@@ -16,13 +16,16 @@ const Manager = () => {
   }, []);
 
   const savePassword = () => {
-    setpasswordArray([...passwordArray, {...form, id:uuidv4()}]);
-    localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id:uuidv4()}]));
-    setform({ site: "", username: "", password: "" })
+    if((form.site.length > 3)  && (form.username.length >3) && (form.password.length > 3 )){
+      setpasswordArray([...passwordArray, {...form, id:uuidv4()}]);
+      localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id:uuidv4()}]));
+      setform({ site: "", username: "", password: "" })
+    }else{
+      toast('Error: Password not saved')
+    }
   };
 
   const deletePassword = (id) => {
-    console.log('deletiing id', id)
     let c = confirm("Do you really want to delete this ?")
     if(c){
 
@@ -87,7 +90,7 @@ const Manager = () => {
         <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-purple-400 opacity-20 blur-[100px]"></div>
       </div>
 
-      <div className="myconatiner">
+      <div className="p-3 md:myconatiner min-h-[80vh]">
         <h1 className="text-4xl text font-bold text-center">
           <span className="text-green-500">&lt;</span>
           Pass
@@ -104,6 +107,7 @@ const Manager = () => {
             name="site"
             type="text "
             className="text rounded-full border border-green-500 w-full p-4 py-1"
+              id="site"
           />
 
           <div className="flex w-full justify-between gap-5">
@@ -114,6 +118,7 @@ const Manager = () => {
               name="username"
               type="text "
               className="text rounded-full border border-green-500 w-full p-4 py-1"
+              id="username"
             />
 
             <div className="relative">
@@ -124,6 +129,7 @@ const Manager = () => {
                 name="password"
                 type={pass}
                 className="text rounded-full border border-green-500 w-full p-4 py-1"
+                id="password"
               />
               <span className="absolute right-2 top-1" onClick={showPassword}>
                 <img ref={ref} width={25} src="icons/eye.png" alt="eye" />
@@ -142,7 +148,7 @@ const Manager = () => {
           </button>
         </div>
         <div className="password">
-          <h2 className="font-bold text-2xl py-4">Your password</h2>
+          <h2 className="font-bold text-2xl py-4">Your password</h2> 
           {passwordArray.length === 0 && <div>No password to show</div>}
           {passwordArray.length != 0 && (
             <table className="table-auto w-full rounded-md overflow-hidden ">
