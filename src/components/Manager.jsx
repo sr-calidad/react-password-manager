@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { v4 as uuidv4 } from 'uuid';
 import "react-toastify/dist/ReactToastify.css";
 
-const Manager = () => {
+const Manager = () => 
 
   const [form, setform] = useState({ site: "", username: "", password: "" });
   const [pass, setpass] = useState();
