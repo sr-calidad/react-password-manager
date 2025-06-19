@@ -12,8 +12,7 @@ const Manager = () =>
     let password = localStorage.getItem("password");
     if (password) {
       setpasswordArray(JSON.parse(password));
-    }
-  }, []);
+  
 
   const savePassword = () => {
     if((form.site.length > 3)  && (form.username.length >3) && (form.password.length > 3 )){
